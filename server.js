@@ -7,8 +7,19 @@ app.set('view engine', 'ejs');
 const exerciseDB = require('./data/exercises-db');
 
 
-app.get('/home', function(req, res) {
-    res.render('home')
+// app.get('/', function(req, res) {
+//     res.render('home')
+// });
+
+app.get('/', function(req, res) {
+    res.redirect('exercises2')
+});
+
+
+app.get('/exercises2', function(req, res) {
+    res.render('exercises/index', {
+        exercises: exerciseDB.getAll()
+    })
 });
 
 app.get('/exercises', function(req,res) {
